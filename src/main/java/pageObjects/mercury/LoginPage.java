@@ -21,6 +21,7 @@ public class LoginPage extends MyWrapper {
     public LoginPage enterUserName(String uid)
     {
         MyWrapper.sendKeys(driver, userName, uid);
+
         return this;
     }
 

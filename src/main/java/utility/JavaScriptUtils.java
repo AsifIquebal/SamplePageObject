@@ -23,19 +23,15 @@ public class JavaScriptUtils {
         }  catch (InterruptedException e) {
         }
     }
-
-
     public static void drawBorder(WebElement element, WebDriver driver){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("arguments[0].style.border='3px solid red'", element);
     }
-
     public static void generateAlert(WebDriver driver, String message){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("alert('"+message+"')");
 
     }
-
     public static void clickElementByJS(WebElement element, WebDriver driver){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("arguments[0].click();", element);
@@ -68,6 +64,14 @@ public class JavaScriptUtils {
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    public static void enterText(WebElement element, String value, WebDriver driver){
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("arguments[0].value = '"+value+"';", element);
+    }
+
+    // enter keys without using sendKeys
+    // jse.executeScript("document.getElementById('email').value = 'sunilrathore77@gmail.com';");
 
     /*// Refresh Browser Window
 		System.out.println("Sending Refresh by Java Script");

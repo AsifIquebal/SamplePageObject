@@ -18,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -51,7 +52,7 @@ public class BaseClass {
 
     @AfterMethod
     public void getScreenShot(ITestResult result) throws IOException {
-        /*Date date = new Date();
+        Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy_hh.mm.ss");
         String formattedDate = formatter.format(date);
         if(!result.isSuccess()){
@@ -65,12 +66,10 @@ public class BaseClass {
             FileUtils.copyFile(scrFile, destFile, true);
             Reporter.setCurrentTestResult(result);
             Reporter.log("<a href='" + destFile.getCanonicalPath() + "'> <img src='" + destFile.getCanonicalPath() + "' height='100' width='100'/> </a>");
-
         }
         if(result.getStatus() == ITestResult.FAILURE){
             System.out.println("Another way to check: result.getStatus() == ITestResult.FAILURE" );
-        }*/
-
+        }
         driver.quit();
 
     }

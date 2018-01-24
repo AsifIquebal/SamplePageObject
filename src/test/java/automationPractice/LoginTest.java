@@ -1,9 +1,15 @@
 package automationPractice;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import pageObjects.automationPractice.BaseClass;
 import pageObjects.automationPractice.BasePage;
 import pageObjects.automationPractice.LoginPage;
+
+import java.util.Hashtable;
+import java.util.List;
 
 
 public class LoginTest extends BaseClass {
@@ -44,6 +50,28 @@ public class LoginTest extends BaseClass {
                 .enterEmail("asu9421@gmail.com")
                 .enterPassword("aut555")
                 .clickOnSignInButton();
+
+
     }
 
+    @Test
+    public void playGround(){
+        Select select  = new Select(driver.findElement(By.id("1")));
+        // all the options
+        List<WebElement> allOptions = select.getOptions();
+        // all selected options
+        List<WebElement> selectedOptions = select.getAllSelectedOptions();
+        // First selected option
+        WebElement element = select.getFirstSelectedOption();
+
+        
+
+        select.selectByVisibleText("SelectMe");
+        select.selectByIndex(1);
+        select.selectByValue("value1");
+    }
+
+
 }
+
+

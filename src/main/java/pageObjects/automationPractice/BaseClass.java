@@ -1,11 +1,13 @@
 package pageObjects.automationPractice;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import utility.MyWrapper;
 
 /**
  * Created by user on 09-Dec-16.
@@ -24,6 +26,20 @@ public class BaseClass {
             System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             driver = new FirefoxDriver();
         }
+    }
+
+    By signInLink = By.xpath("//a[normalize-space()='Sign in']");
+
+    /*public BaseClass(WebDriver driver){
+        this.driver = driver;
+    }*/
+
+    public void LaunchApplication(){
+        driver.get("http://automationpractice.com");
+    }
+    public LoginPage clickSignInLink(){
+        MyWrapper.click(driver, signInLink);
+        return new LoginPage(driver);
     }
 
 

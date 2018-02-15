@@ -56,20 +56,21 @@ public class MyWrapper {
 
     public static WebElement waitUntilElementExists(WebDriver driver, final By by) {
 
-        FluentWait<WebDriver> my_wait = new FluentWait<WebDriver>(driver)
+        FluentWait<WebDriver> my_wait = new FluentWait<>(driver)
                 .withTimeout(30, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.MICROSECONDS)
                 .ignoring(NoSuchElementException.class);
 
-        WebElement my_element = my_wait
+        WebElement element = my_wait.until((driver1) -> driver.findElement(by));
+        /*WebElement element = my_wait
                 .until(new Function<WebDriver, WebElement>() {
                     @Override
                     public WebElement apply(WebDriver driver) {
-                        return (driver.findElement(by));
+                        return driver.findElement(by);
                         //return driver.findElement(By.id(element_identifier_id));
                     }
-                });
-        return my_element;
+                });*/
+        return element;
     }
 
     public static WebDriverWait waitExplicit(WebDriver driver, By by){

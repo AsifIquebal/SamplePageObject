@@ -8,15 +8,16 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.automationPractice.BaseClass;
-import pageObjects.automationPractice.LoginPage;
+import pageObjects.automationPractice.*;
 
 import java.util.Hashtable;
 import java.util.List;
 
 
-public class LoginTest extends BaseClass {
+public class TestCase1 extends BaseClass {
     LoginPage loginPage;
+    Common common;
+    MyAccount myAccount;
 
     @Test
     public void openLoginPageTest(){
@@ -32,6 +33,38 @@ public class LoginTest extends BaseClass {
                 .enterPassword("aut555")
                 .clickOnSignInButton();
         Assert.assertEquals(driver.getTitle(),"My account - My Store");
+    }
+
+    @Test(dependsOnMethods = "loginTest")
+    public void AddAddress() {
+        myAccount = new MyAccount(driver);
+        MyAddresses myAddress = myAccount.ClickOnMyAddress();
+        myAddress.clickOnAddNewAddress();
+        myAddress
+                .enterFirstName("Asif")
+                .enterLastName("Sarkar")
+                .enterAddress1("5th Avenue Street, North Dacota")
+                .enterCity("Seattle")
+                .SelectState(2)
+                .enterPostcode("50001")
+                .enterHomePhone("1234567890")
+                .enterMobilePhone("1234567890");
+        myAccount = myAddress.ClickOnSaveButton();
+
+
+
+    }
+
+    @Test(dependsOnMethods = "AddAddress")
+    public void DeleteAddress(){
+
+    }
+
+    @Test(dependsOnMethods = "DeleteAddress")
+    public void performSignOut(){
+        common = new Common(driver);
+        common.ClickOnSignOutLink();
+        Assert.assertEquals(driver.getTitle(),"Login - My Store");
     }
 
     /*@Test

@@ -68,6 +68,12 @@ public class MyAddresses {
         return this;
     }
 
+    private By AddressTitle = By.id("alias");
+    public MyAddresses enterAddressTitle(String string) {
+        MyWrapper.sendKeys(driver,AddressTitle,string);
+        return this;
+    }
+
     private By SaveButton = By.xpath("//span[normalize-space()='Save']");
     public MyAccount ClickOnSaveButton(){
         MyWrapper.click(driver,SaveButton);

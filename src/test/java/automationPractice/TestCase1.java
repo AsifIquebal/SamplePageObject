@@ -35,6 +35,7 @@ public class TestCase1 extends BaseClass {
         Assert.assertEquals(driver.getTitle(),"My account - My Store");
     }
 
+    String addressTitle = "AsusAddress";
     @Test(dependsOnMethods = "loginTest")
     public void AddAddress() {
         myAccount = new MyAccount(driver);
@@ -48,16 +49,14 @@ public class TestCase1 extends BaseClass {
                 .SelectState(2)
                 .enterPostcode("50001")
                 .enterHomePhone("1234567890")
-                .enterMobilePhone("1234567890");
+                .enterMobilePhone("1234567890")
+                .enterAddressTitle(addressTitle);
         myAccount = myAddress.ClickOnSaveButton();
-
-
-
     }
 
     @Test(dependsOnMethods = "AddAddress")
     public void DeleteAddress(){
-
+        myAccount.DeleteAddress1();
     }
 
     @Test(dependsOnMethods = "DeleteAddress")

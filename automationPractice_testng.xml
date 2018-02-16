@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="testSuite">
-    <test name="myTest">
-        <classes>
-            <class name="automationPractice.TestCase1" />
-
-        </classes>
-    </test>
-</suite>

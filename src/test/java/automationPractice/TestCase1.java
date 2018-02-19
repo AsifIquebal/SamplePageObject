@@ -2,43 +2,39 @@ package automationPractice;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.automationPractice.*;
+import pageObjects.base.BaseClass;
 
-import java.util.Hashtable;
 import java.util.List;
 
 
 public class TestCase1 extends BaseClass {
     LoginPage loginPage;
-    Common common;
     MyAccount myAccount;
 
     @Test
     public void openLoginPageTest(){
         LaunchApplication();
-        loginPage = clickSignInLink();
-        Assert.assertEquals(driver.getTitle(),"Login - My Store");
+        loginPage = clickOnSignInLink();
+        Assert.assertEquals(getPageTitle(),"Login - My Store");
     }
 
     @Test(dependsOnMethods = "openLoginPageTest")
     public void loginTest(){
         loginPage
                 .enterEmail("asu9421@gmail.com")
-                .enterPassword("aut555")
-                .clickOnSignInButton();
-        Assert.assertEquals(driver.getTitle(),"My account - My Store");
+                .enterPassword("aut555");
+        myAccount = loginPage.clickOnSignInButton();
+        Assert.assertEquals(getPageTitle(),"My account - My Store");
     }
 
     String addressTitle = "AsusAddress";
     @Test(dependsOnMethods = "loginTest")
     public void AddAddress() {
-        myAccount = new MyAccount(driver);
         MyAddresses myAddress = myAccount.ClickOnMyAddress();
         myAddress.clickOnAddNewAddress();
         myAddress
@@ -61,9 +57,8 @@ public class TestCase1 extends BaseClass {
 
     @Test(dependsOnMethods = "DeleteAddress")
     public void performSignOut(){
-        common = new Common();
-        common.ClickOnSignOutLink();
-        Assert.assertEquals(driver.getTitle(),"Login - My Store");
+        clickOnSignOutLink();
+        Assert.assertEquals(getPageTitle(),"Login - My Store");
     }
 
     /*@Test
@@ -73,16 +68,6 @@ public class TestCase1 extends BaseClass {
         Reporter.log("Hi Asif, this is from TestNGRelated Reporter Log");
         Assert.assertEquals("1","2");
     }*/
-
-    //@Test
-    public void testOnly(){
-        driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        loginPage = new LoginPage(driver);
-        loginPage
-                .enterEmail("asu9421@gmail.com")
-                .enterPassword("aut555")
-                .clickOnSignInButton();
-    }
 
     //@Test
     public void playGround(){
@@ -97,13 +82,6 @@ public class TestCase1 extends BaseClass {
         select.selectByIndex(1);
         select.selectByValue("value1");
         element.sendKeys("\\n");
-    }
-
-
-    @AfterClass
-    public void tearDown(){
-        driver.close();
-        driver.quit();
     }
 
 }

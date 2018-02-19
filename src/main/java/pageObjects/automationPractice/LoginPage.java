@@ -26,8 +26,9 @@ public class LoginPage{
         return this;
     }
 
-    public void clickOnSignInButton() {
+    public MyAccount clickOnSignInButton() {
         MyWrapper.click(driver, signInButton);
+        return new MyAccount(driver);
     }
 
 }

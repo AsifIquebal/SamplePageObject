@@ -61,7 +61,7 @@ public class TestCase1 extends BaseClass {
 
     @Test(dependsOnMethods = "DeleteAddress")
     public void performSignOut(){
-        common = new Common(driver);
+        common = new Common();
         common.ClickOnSignOutLink();
         Assert.assertEquals(driver.getTitle(),"Login - My Store");
     }

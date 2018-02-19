@@ -9,19 +9,22 @@ public class Common {
 
     public WebDriver driver;
 
-    public Common(WebDriver driver) {
+    /*public Common(WebDriver driver) {
         this.driver = driver;
-    }
+    }*/
+
     // Menu
-    By WomenMenu = By.xpath("//a[@title='Women']");
+    public By WomenMenu = By.xpath("//a[@title='Women']");
     By DressesMenu = By.xpath("//a[@title='Dresses']");
     By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
     By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
+    public By Women_EveningDress = By.xpath("//a[@title='Women']/..//a[@title='Evening Dresses']");
     By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
 
-    private void moveMouse(WebDriver driver, By by){
+    public void moveMouse(WebDriver driver, By by) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(by)).build().perform();
+        Thread.sleep(2000);
     }
 
     // Sign Out link
@@ -29,5 +32,13 @@ public class Common {
     public void ClickOnSignOutLink(){
         MyWrapper.click(driver, signOut);
     }
+
+
+
+
+
+
+
+
 
 }

@@ -3,6 +3,7 @@
     <test name="myTest">
         <classes>
             <class name="automationPractice.TestCase1" />
+            <class name="automationPractice.TestCase2"/>
 
         </classes>
     </test>

@@ -33,6 +33,7 @@ public class BaseClass {
             options.addArguments("--start-maximized");
             /*Headless on Windows, Check periodically for any modification*/
             //options.addArguments("--headless","--disable-gpu");
+            //Exception exception = new Exception()
 
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {

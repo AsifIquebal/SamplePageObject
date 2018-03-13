@@ -22,9 +22,7 @@
         <junit.version>4.12</junit.version>
         <cucumber.version>1.2.4</cucumber.version>
         <jsoup.version>1.11.2</jsoup.version>
-        <!--<aspectj.version>1.7.4</aspectj.version>
-        <allure.version>1.4.0.RC4</allure.version>
-        -->
+        <log4j.version>2.10.0</log4j.version>
     </properties>
 
     <build>
@@ -84,6 +82,18 @@
             <artifactId>awaitility</artifactId>
             <version>3.0.0</version>
 
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
 
     </dependencies>

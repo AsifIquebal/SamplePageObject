@@ -35,6 +35,7 @@ public class MyWrapper {
             JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).clear();
             driver.findElement(by).sendKeys(valueToType);
+            //ex.printStackTrace();
         }
     }
 

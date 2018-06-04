@@ -16,7 +16,7 @@ public class TestCase1 extends BaseTest {
     public void openLoginPageTest() {
         LaunchApplication();
         loginPage = clickOnSignInLink();
-        Assert.assertEquals(getPageTitle(), "Login - My Store");
+        Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
 
     @Test(dependsOnMethods = "openLoginPageTest")
@@ -25,7 +25,7 @@ public class TestCase1 extends BaseTest {
                 .enterEmail("asu9421@gmail.com")
                 .enterPassword("aut555");
         myAccount = loginPage.clickOnSignInButton();
-        Assert.assertEquals(getPageTitle(), "My account - My Store");
+        Assert.assertEquals(myAccount.getPageTitle(), "My account - My Store");
     }
 
     @Test(dependsOnMethods = "loginTest")
@@ -53,7 +53,7 @@ public class TestCase1 extends BaseTest {
     @Test(dependsOnMethods = "DeleteAddress")
     public void performSignOut() {
         clickOnSignOutLink();
-        Assert.assertEquals(getPageTitle(), "Login - My Store");
+        Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
 
     /*@Test

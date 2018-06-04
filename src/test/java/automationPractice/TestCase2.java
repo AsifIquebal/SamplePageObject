@@ -1,12 +1,13 @@
 package automationPractice;
 
+import pageObjects.automationPractice.LoginPage;
 import pageObjects.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestCase2 extends BaseTest {
 
-    //Common common;
+    LoginPage loginPage;
 
     @Test
     public void NavigateToWomenEveningDressSection() throws InterruptedException {
@@ -23,7 +24,7 @@ public class TestCase2 extends BaseTest {
     public void NavigateToWomenEveningDressSection2() throws InterruptedException {
         LaunchApplication();
         openWomenEveningDressMenu();
-        Assert.assertEquals(getPageTitle(), "Evening Dresses - My Store");
+        Assert.assertEquals(loginPage.getPageTitle(), "Evening Dresses - My Store");
     }
 
 

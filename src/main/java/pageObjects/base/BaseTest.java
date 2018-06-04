@@ -67,7 +67,6 @@ public abstract class BaseTest {
     }
 
     // Menu-Sub Menu Navigation
-    // Menu
     public By WomenMenu = By.xpath("//a[@title='Women']");
     By DressesMenu = By.xpath("//a[@title='Dresses']");
     By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
@@ -96,11 +95,6 @@ public abstract class BaseTest {
                     .perform();
             MyWrapper.click(driver,Women_EveningDress);
         }
-    }
-
-    // Get Page Title
-    public String getPageTitle(){
-        return driver.getTitle();
     }
 
     @AfterClass

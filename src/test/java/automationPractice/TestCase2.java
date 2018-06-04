@@ -1,12 +1,10 @@
 package automationPractice;
 
+import pageObjects.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.automationPractice.Common;
-import pageObjects.automationPractice.Women;
-import pageObjects.base.BaseClass;
 
-public class TestCase2 extends BaseClass {
+public class TestCase2 extends BaseTest {
 
     //Common common;
 
@@ -25,7 +23,7 @@ public class TestCase2 extends BaseClass {
     public void NavigateToWomenEveningDressSection2() throws InterruptedException {
         LaunchApplication();
         openWomenEveningDressMenu();
-        Assert.assertEquals(getPageTitle(),"Evening Dresses - My Store");
+        Assert.assertEquals(getPageTitle(), "Evening Dresses - My Store");
     }
 
 

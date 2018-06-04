@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testSuite">
+<!--<suite name="testSuite" parallel="tests" thread-count="2">-->
+
+    <test name="myTest">
+        <classes>
+            <class name="automationPracticeParallel.TestCase1">
+                <!--<methods>
+                    <include name="simpleSearch1"></include>
+                </methods>-->
+            </class>
+        </classes>
+    </test>
+
+    <!--<test name="myTest1">
+        <classes>
+            <class name="automationPracticeParallel.TestCase1">
+                <methods>
+                    <include name="simpleSearch1"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>-->
+
+</suite>

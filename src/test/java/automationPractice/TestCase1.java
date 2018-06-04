@@ -1,38 +1,33 @@
 package automationPractice;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import pageObjects.base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import pageObjects.automationPractice.*;
-import pageObjects.base.BaseClass;
+import pageObjects.automationPractice.LoginPage;
+import pageObjects.automationPractice.MyAccount;
+import pageObjects.automationPractice.MyAddresses;
 
-import java.util.List;
-
-
-public class TestCase1 extends BaseClass {
+public class TestCase1 extends BaseTest {
     LoginPage loginPage;
     MyAccount myAccount;
+    String addressTitle = "AsusAddress";
 
     @Test
-    public void openLoginPageTest(){
+    public void openLoginPageTest() {
         LaunchApplication();
         loginPage = clickOnSignInLink();
-        Assert.assertEquals(getPageTitle(),"Login - My Store");
+        Assert.assertEquals(getPageTitle(), "Login - My Store");
     }
 
     @Test(dependsOnMethods = "openLoginPageTest")
-    public void loginTest(){
+    public void loginTest() {
         loginPage
                 .enterEmail("asu9421@gmail.com")
                 .enterPassword("aut555");
         myAccount = loginPage.clickOnSignInButton();
-        Assert.assertEquals(getPageTitle(),"My account - My Store");
+        Assert.assertEquals(getPageTitle(), "My account - My Store");
     }
 
-    String addressTitle = "AsusAddress";
     @Test(dependsOnMethods = "loginTest")
     public void AddAddress() {
         MyAddresses myAddress = myAccount.ClickOnMyAddress();
@@ -51,14 +46,14 @@ public class TestCase1 extends BaseClass {
     }
 
     @Test(dependsOnMethods = "AddAddress")
-    public void DeleteAddress(){
+    public void DeleteAddress() {
         myAccount.DeleteAddress1();
     }
 
     @Test(dependsOnMethods = "DeleteAddress")
-    public void performSignOut(){
+    public void performSignOut() {
         clickOnSignOutLink();
-        Assert.assertEquals(getPageTitle(),"Login - My Store");
+        Assert.assertEquals(getPageTitle(), "Login - My Store");
     }
 
     /*@Test
@@ -69,20 +64,6 @@ public class TestCase1 extends BaseClass {
         Assert.assertEquals("1","2");
     }*/
 
-    //@Test
-    public void playGround(){
-        Select select  = new Select(driver.findElement(By.id("1")));
-        // all the options
-        List<WebElement> allOptions = select.getOptions();
-        // all selected options
-        List<WebElement> selectedOptions = select.getAllSelectedOptions();
-        // First selected option
-        WebElement element = select.getFirstSelectedOption();
-        select.selectByVisibleText("SelectMe");
-        select.selectByIndex(1);
-        select.selectByValue("value1");
-        element.sendKeys("\\n");
-    }
 
 }
 

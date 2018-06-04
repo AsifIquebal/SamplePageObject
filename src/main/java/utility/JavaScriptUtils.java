@@ -70,7 +70,6 @@ public class JavaScriptUtils {
         js.executeScript("arguments[0].value = '"+value+"';", element);
     }
 
-
     // enter keys without using sendKeys
     // jse.executeScript("document.getElementById('email').value = 'sunilrathore77@gmail.com';");
 

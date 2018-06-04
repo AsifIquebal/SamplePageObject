@@ -1,5 +1,7 @@
 package pageObjects.base;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,9 +15,10 @@ import org.testng.annotations.Parameters;
 import pageObjects.automationPractice.LoginPage;
 import utility.MyWrapper;
 
-public class BaseClass {
+public abstract class BaseTest {
 
-    public WebDriver driver;
+    private WebDriver driver;
+    public final static Logger log = LogManager.getLogger();
 
     @BeforeClass
     @Parameters("browser")
@@ -38,6 +41,11 @@ public class BaseClass {
             System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             driver = new FirefoxDriver();
         }
+    }
+
+    // all the classes which extends this class will be able to use this method
+    protected WebDriver driver(){
+        return driver;
     }
 
     // Launch the Application
@@ -90,8 +98,6 @@ public class BaseClass {
         }
     }
 
-
-
     // Get Page Title
     public String getPageTitle(){
         return driver.getTitle();
@@ -99,14 +105,10 @@ public class BaseClass {
 
     @AfterClass
     public void tearDown(){
-        driver.quit();
+        if(driver != null){
+            driver.quit();
+        }
     }
-
-
-
-
-
-
 
 }
 

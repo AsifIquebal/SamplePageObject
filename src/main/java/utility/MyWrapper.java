@@ -28,9 +28,7 @@ public class MyWrapper {
             System.out.println("Could not perform SendKeys on element identified by " + by.toString());
             Assert.fail();
         } catch (Exception ex) {
-            //when(ex is StaleElementReferenceException)
-            // find element again and retry
-            //new WebDriverWait(driver, TimeSpan.FromSeconds(Constants.DefaultTimeout)).Until(ExpectedConditions.ElementIsVisible(by));
+            //when(ex is StaleElementReferenceException) find element again and retry
             new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(by));
             JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).clear();

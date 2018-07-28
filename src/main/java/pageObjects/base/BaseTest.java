@@ -22,7 +22,8 @@ public abstract class BaseTest {
 
     @BeforeClass
     @Parameters("browser")
-    public void launchBrowser(@Optional("Chrome") String browser) {
+    public void launchBrowser(@Optional("firefox") String browser) {
+
         if (browser.equalsIgnoreCase("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             ChromeOptions options = new ChromeOptions();
@@ -37,7 +38,8 @@ public abstract class BaseTest {
             //Exception exception = new Exception()
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+            //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
             driver = new FirefoxDriver();
         }
     }

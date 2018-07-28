@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="testSuite">
     <test name="myTest">
-        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="browser" value="Chrome"></parameter>
         <classes>
-            <class name="automationPractice.TestCase1" />
+            <class name="automationPractice.TestCase1"/>
             <class name="automationPractice.TestCase2"/>
 
         </classes>

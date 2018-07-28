@@ -18,8 +18,16 @@ import utility.MyWrapper;
 
 public abstract class BaseTest {
 
-    private WebDriver driver;
     public final static Logger log = LogManager.getLogger();
+    // Sign In Link
+    By signInLink = By.xpath("//a[normalize-space()='Sign in']");
+    By DressesMenu = By.xpath("//a[@title='Dresses']");
+    By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
+    By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
+    By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
+    private WebDriver driver;
+    // Sign Out link
+    private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
 
     @BeforeClass
     @Parameters("browser")
@@ -45,37 +53,27 @@ public abstract class BaseTest {
         }
     }
 
+    // Menu-Sub Menu Navigation
+
     // all the classes which extends this class will be able to use this method
-    protected WebDriver driver(){
+    protected WebDriver driver() {
         return driver;
     }
 
     // Launch the Application
-    public HomePage LaunchApplication(){
+    public HomePage LaunchApplication() {
         driver.get("http://automationpractice.com");
         return new HomePage(driver());
     }
 
-    // Sign In Link
-    By signInLink = By.xpath("//a[normalize-space()='Sign in']");
-    public LoginPage clickOnSignInLink(){
+    public LoginPage clickOnSignInLink() {
         MyWrapper.click(driver, signInLink);
         return new LoginPage(driver);
     }
 
-    // Sign Out link
-    private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
-    public void clickOnSignOutLink(){
+    public void clickOnSignOutLink() {
         MyWrapper.click(driver, signOut);
     }
-
-    // Menu-Sub Menu Navigation
-
-    By DressesMenu = By.xpath("//a[@title='Dresses']");
-    By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
-    By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
-
-    By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
 
     public void moveMouse(By by) throws InterruptedException {
         Actions actions = new Actions(driver);
@@ -84,8 +82,8 @@ public abstract class BaseTest {
     }
 
     @AfterClass
-    public void tearDown(){
-        if(driver != null){
+    public void tearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }

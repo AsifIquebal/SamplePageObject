@@ -8,18 +8,19 @@ import utility.MyWrapper;
 
 public class MyAccount extends BasePage {
 
-    public MyAccount (WebDriver driver) {
+    private By MyAddresses = By.xpath("//span[text()='My addresses']");
+    private By deleteAddressButton1 = By.xpath("(//span[text()='Delete'])[1]");
+
+    public MyAccount(WebDriver driver) {
         super(driver);
     }
 
-    private By MyAddresses = By.xpath("//span[text()='My addresses']");
-    public MyAddresses ClickOnMyAddress(){
+    public MyAddresses ClickOnMyAddress() {
         MyWrapper.click(driver(), MyAddresses);
         return new MyAddresses(driver());
     }
 
-    private By deleteAddressButton1 = By.xpath("(//span[text()='Delete'])[1]");
-    public MyAccount DeleteAddress1(){
+    public MyAccount DeleteAddress1() {
         MyWrapper.click(driver(), deleteAddressButton1);
         Alert alert = driver().switchTo().alert();
         alert.accept();

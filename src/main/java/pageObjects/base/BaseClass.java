@@ -16,12 +16,24 @@ import utility.MyWrapper;
 public class BaseClass {
 
     public WebDriver driver;
+    // Menu-Sub Menu Navigation
+    // Menu
+    public By WomenMenu = By.xpath("//a[@title='Women']");
+    public By Women_EveningDress = By.xpath("//a[@title='Women']/..//a[@title='Evening Dresses']");
+    // Sign In Link
+    By signInLink = By.xpath("//a[normalize-space()='Sign in']");
+    By DressesMenu = By.xpath("//a[@title='Dresses']");
+    By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
+    By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
+    By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
+    // Sign Out link
+    private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
 
     @BeforeClass
     @Parameters("browser")
     public void launchBrowser(@Optional("Chrome") String browser) {
         if (browser.equalsIgnoreCase("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             //System.setProperty("webdriver.chrome.driver", "Selenium\\parentResource\\drivers\\chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
             //options.setAcceptInsecureCerts(true);
@@ -35,37 +47,24 @@ public class BaseClass {
             //Exception exception = new Exception()
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
             driver = new FirefoxDriver();
         }
     }
 
     // Launch the Application
-    public void LaunchApplication(){
+    public void LaunchApplication() {
         driver.get("http://automationpractice.com");
     }
 
-    // Sign In Link
-    By signInLink = By.xpath("//a[normalize-space()='Sign in']");
-    public LoginPage clickOnSignInLink(){
+    public LoginPage clickOnSignInLink() {
         MyWrapper.click(driver, signInLink);
         return new LoginPage(driver);
     }
 
-    // Sign Out link
-    private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
-    public void clickOnSignOutLink(){
+    public void clickOnSignOutLink() {
         MyWrapper.click(driver, signOut);
     }
-
-    // Menu-Sub Menu Navigation
-    // Menu
-    public By WomenMenu = By.xpath("//a[@title='Women']");
-    By DressesMenu = By.xpath("//a[@title='Dresses']");
-    By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
-    By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
-    public By Women_EveningDress = By.xpath("//a[@title='Women']/..//a[@title='Evening Dresses']");
-    By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
 
     public void moveMouse(By by) throws InterruptedException {
         Actions actions = new Actions(driver);
@@ -74,10 +73,9 @@ public class BaseClass {
     }
 
     public void openWomenEveningDressMenu() {
-        if(driver==null){
+        if (driver == null) {
             System.out.println("driver is null");
-        }
-        else {
+        } else {
             Actions actions = new Actions(driver);
             actions
                     .moveToElement(driver.findElement(WomenMenu))
@@ -86,26 +84,20 @@ public class BaseClass {
                     .pause(2000)
                     .build()
                     .perform();
-            MyWrapper.click(driver,Women_EveningDress);
+            MyWrapper.click(driver, Women_EveningDress);
         }
     }
 
 
-
     // Get Page Title
-    public String getPageTitle(){
+    public String getPageTitle() {
         return driver.getTitle();
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
-
-
-
-
-
 
 
 }

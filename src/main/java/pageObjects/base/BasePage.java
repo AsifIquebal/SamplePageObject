@@ -1,7 +1,6 @@
 package pageObjects.base;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 
 public abstract class BasePage {
 
@@ -16,7 +15,7 @@ public abstract class BasePage {
     }
 
     // Get Page Title
-    public String getPageTitle(){
+    public String getPageTitle() {
         return driver.getTitle();
     }
 

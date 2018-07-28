@@ -71,13 +71,13 @@ public class MyWrapper {
         return element;
     }
 
-    public static WebDriverWait waitExplicit(WebDriver driver, By by){
+    public static WebDriverWait waitExplicit(WebDriver driver, By by) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
         return wait;
     }
 
-    public static WebDriverWait waitExplicit(WebDriver driver, WebElement element){
+    public static WebDriverWait waitExplicit(WebDriver driver, WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(element));
         return wait;

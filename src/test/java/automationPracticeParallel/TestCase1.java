@@ -1,6 +1,5 @@
 package automationPracticeParallel;
 
-import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
@@ -25,8 +24,8 @@ public class TestCase1 extends ThreadLocalBase {
     }
 
 
-    @DataProvider(name = "dp",parallel = true)
-    public Object[][] getData(){
+    @DataProvider(name = "dp", parallel = true)
+    public Object[][] getData() {
         return new Object[][]{
                 {"Sari"},
                 {"CHIFFON"}

@@ -1,11 +1,11 @@
 package automationPractice;
 
-import pageObjects.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.automationPractice.LoginPage;
 import pageObjects.automationPractice.MyAccount;
 import pageObjects.automationPractice.MyAddresses;
+import pageObjects.base.BaseTest;
 
 public class TestCase1 extends BaseTest {
     LoginPage loginPage;
@@ -19,7 +19,7 @@ public class TestCase1 extends BaseTest {
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
 
-    @Test(dependsOnMethods = "openLoginPageTest")
+    /*@Test(dependsOnMethods = "openLoginPageTest")
     public void loginTest() {
         loginPage
                 .enterEmail("asu9421@gmail.com")
@@ -54,7 +54,7 @@ public class TestCase1 extends BaseTest {
     public void performSignOut() {
         clickOnSignOutLink();
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
-    }
+    }*/
 
     /*@Test
     public void failedTest(){

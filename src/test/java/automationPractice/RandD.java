@@ -1,19 +1,15 @@
 package automationPractice;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.pagefactory.ByAll;
-import org.testng.annotations.BeforeClass;
-import pageObjects.base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.pagefactory.ByAll;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
+import pageObjects.base.BaseTest;
 
 import java.util.List;
 
-public class RandD extends BaseTest{
+public class RandD extends BaseTest {
 
     /*WebDriver driver;
 
@@ -27,8 +23,8 @@ public class RandD extends BaseTest{
     }*/
 
     //@Test
-    public void playGround(){
-        Select select  = new Select(driver().findElement(By.id("1")));
+    public void playGround() {
+        Select select = new Select(driver().findElement(By.id("1")));
         // all the options
         List<WebElement> allOptions = select.getOptions();
         // all selected options
@@ -42,22 +38,22 @@ public class RandD extends BaseTest{
     }
 
     @Test
-    public void systemPropertyTest(){
+    public void systemPropertyTest() {
         log.info("Previous: ");
         //System.out.print("Previous : ");
-        log.info(System.getProperty("java.runtime.version" ));
+        log.info(System.getProperty("java.runtime.version"));
         //System.out.println(System.getProperty("java.runtime.version" ));
         System.setProperty("java.runtime.version", "Java Runtime 1.6.0");
         // prints Java Runtime Version after property set
         log.info("New : ");
         //System.out.print("New : ");
-        log.info(System.getProperty("java.runtime.version" ));
+        log.info(System.getProperty("java.runtime.version"));
         //System.out.println(System.getProperty("java.runtime.version" ));
 
     }
 
     @Test
-    public void locators(){
+    public void locators() {
         driver().get("https://www.actitime.com/free-online-trial");
         driver().findElement(new ByAll(By.className("form-input"), By.id("last-name"), By.name("lastName"))).sendKeys("Asif");
         Integer i = new Integer(99);

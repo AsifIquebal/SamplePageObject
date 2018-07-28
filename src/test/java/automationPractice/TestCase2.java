@@ -1,11 +1,11 @@
 package automationPractice;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pageObjects.automationPractice.EveningDresses;
 import pageObjects.automationPractice.HomePage;
 import pageObjects.automationPractice.LoginPage;
 import pageObjects.base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class TestCase2 extends BaseTest {
 
@@ -24,7 +24,7 @@ public class TestCase2 extends BaseTest {
         Assert.assertEquals(getPageTitle(),"Evening Dresses - My Store");*/
     }
 
-    @Test
+    //@Test
     public void NavigateToWomenEveningDressSection2() throws InterruptedException {
         homePage = LaunchApplication();
         eveningDresses = homePage.openWomenEveningDressMenu();

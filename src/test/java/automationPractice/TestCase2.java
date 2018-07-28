@@ -1,5 +1,7 @@
 package automationPractice;
 
+import pageObjects.automationPractice.EveningDresses;
+import pageObjects.automationPractice.HomePage;
 import pageObjects.automationPractice.LoginPage;
 import pageObjects.base.BaseTest;
 import org.testng.Assert;
@@ -7,7 +9,9 @@ import org.testng.annotations.Test;
 
 public class TestCase2 extends BaseTest {
 
+    HomePage homePage;
     LoginPage loginPage;
+    EveningDresses eveningDresses;
 
     @Test
     public void NavigateToWomenEveningDressSection() throws InterruptedException {
@@ -22,9 +26,9 @@ public class TestCase2 extends BaseTest {
 
     @Test
     public void NavigateToWomenEveningDressSection2() throws InterruptedException {
-        LaunchApplication();
-        openWomenEveningDressMenu();
-        Assert.assertEquals(loginPage.getPageTitle(), "Evening Dresses - My Store");
+        homePage = LaunchApplication();
+        eveningDresses = homePage.openWomenEveningDressMenu();
+        Assert.assertEquals(eveningDresses.getPageTitle(), "Evening Dresses - My Store");
     }
 
 

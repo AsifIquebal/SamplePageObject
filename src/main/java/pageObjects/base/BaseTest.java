@@ -12,6 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import pageObjects.automationPractice.HomePage;
 import pageObjects.automationPractice.LoginPage;
 import utility.MyWrapper;
 
@@ -22,7 +23,7 @@ public abstract class BaseTest {
 
     @BeforeClass
     @Parameters("browser")
-    public void launchBrowser(@Optional("firefox") String browser) {
+    public void launchBrowser(@Optional("Chrome") String browser) {
 
         if (browser.equalsIgnoreCase("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
@@ -50,8 +51,9 @@ public abstract class BaseTest {
     }
 
     // Launch the Application
-    public void LaunchApplication(){
+    public HomePage LaunchApplication(){
         driver.get("http://automationpractice.com");
+        return new HomePage(driver());
     }
 
     // Sign In Link
@@ -68,34 +70,17 @@ public abstract class BaseTest {
     }
 
     // Menu-Sub Menu Navigation
-    public By WomenMenu = By.xpath("//a[@title='Women']");
+
     By DressesMenu = By.xpath("//a[@title='Dresses']");
     By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
     By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
-    public By Women_EveningDress = By.xpath("//a[@title='Women']/..//a[@title='Evening Dresses']");
+
     By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
 
     public void moveMouse(By by) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(by)).build().perform();
         Thread.sleep(2000);
-    }
-
-    public void openWomenEveningDressMenu() {
-        if(driver==null){
-            System.out.println("driver is null");
-        }
-        else {
-            Actions actions = new Actions(driver);
-            actions
-                    .moveToElement(driver.findElement(WomenMenu))
-                    .pause(2000)
-                    .moveToElement(driver.findElement(Women_EveningDress))
-                    .pause(2000)
-                    .build()
-                    .perform();
-            MyWrapper.click(driver,Women_EveningDress);
-        }
     }
 
     @AfterClass

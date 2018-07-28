@@ -1,15 +1,14 @@
 package pageObjects.automationPractice;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import pageObjects.base.BasePage;
 import utility.MyWrapper;
 
-public class Women extends BasePage {
+public class EveningDresses extends BasePage {
 
-    /*public WebDriver driver;
-    Common common;*/
-
-    public Women(WebDriver driver){
+    public EveningDresses(WebDriver driver) {
         super(driver);
     }
 

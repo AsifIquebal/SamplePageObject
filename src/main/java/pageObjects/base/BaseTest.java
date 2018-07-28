@@ -32,6 +32,8 @@ public abstract class BaseTest {
     @BeforeClass
     @Parameters("browser")
     public void launchBrowser(@Optional("Chrome") String browser) {
+        String OS = System.getProperty("os.name").toLowerCase();
+
 
         if (browser.equalsIgnoreCase("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
@@ -42,6 +44,8 @@ public abstract class BaseTest {
             options.addArguments("disable-infobars");
             // Start in Maximized mode
             options.addArguments("--start-maximized");
+            options.addArguments("--no-sandbox"); // Bypass OS security model
+            options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
             /*Headless on Windows, Check periodically for any modification*/
             //options.addArguments("--headless","--disable-gpu");
             //Exception exception = new Exception()

@@ -1,6 +1,5 @@
 package utility;
 
-import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class MyWrapper {
     private static final int waitTime = 15;
@@ -56,8 +55,8 @@ public class MyWrapper {
     public static WebElement waitUntilElementExists(WebDriver driver, final By by) {
 
         FluentWait<WebDriver> my_wait = new FluentWait<>(driver)
-                .withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.MICROSECONDS)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class);
 
         WebElement element = my_wait.until((driver1) -> driver.findElement(by));

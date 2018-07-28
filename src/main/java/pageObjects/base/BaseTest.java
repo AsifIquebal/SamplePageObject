@@ -24,8 +24,7 @@ public abstract class BaseTest {
     @Parameters("browser")
     public void launchBrowser(@Optional("Chrome") String browser) {
         if (browser.equalsIgnoreCase("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-            //System.setProperty("webdriver.chrome.driver", "Selenium\\parentResource\\drivers\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             ChromeOptions options = new ChromeOptions();
             //options.setAcceptInsecureCerts(true);
             //options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);

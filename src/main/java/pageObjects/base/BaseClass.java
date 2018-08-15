@@ -88,7 +88,6 @@ public class BaseClass {
         }
     }
 
-
     // Get Page Title
     public String getPageTitle() {
         return driver.getTitle();
@@ -98,7 +97,6 @@ public class BaseClass {
     public void tearDown() {
         driver.quit();
     }
-
 
 }
 

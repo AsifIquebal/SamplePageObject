@@ -33,10 +33,13 @@ public abstract class BaseTest {
     @Parameters("browser")
     public void launchBrowser(@Optional("Chrome") String browser) {
         String OS = System.getProperty("os.name").toLowerCase();
-
-
+        log.info("Running on Platform: " + OS);
         if (browser.equalsIgnoreCase("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
+            if(OS == "linux"){
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
+            } else {
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+            }
             ChromeOptions options = new ChromeOptions();
             //options.setAcceptInsecureCerts(true);
             //options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
@@ -51,8 +54,11 @@ public abstract class BaseTest {
             //Exception exception = new Exception()
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
-            //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
-            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
+            if(OS == "linux"){
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
+            } else {
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+            }
             driver = new FirefoxDriver();
         }
     }

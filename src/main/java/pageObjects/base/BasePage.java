@@ -19,11 +19,6 @@ public abstract class BasePage {
         return driver.getTitle();
     }
 
-    /*@AfterClass
-    public void tearDown() {
-        driver.quit();
-    }*/
-
 }
 
 

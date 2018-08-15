@@ -28,10 +28,6 @@ public class HomePage extends BasePage {
     }
 
     public EveningDresses openWomenEveningDressMenu() {
-        /*if(driver()==null){
-            System.out.println("driver is null");
-        }
-        else {*/
         Actions actions = new Actions(driver());
         actions
                 .moveToElement(driver().findElement(WomenMenu))
@@ -42,7 +38,6 @@ public class HomePage extends BasePage {
                 .perform();
         MyWrapper.click(driver(), Women_EveningDress);
         return new EveningDresses(driver());
-        //}
     }
 
 }

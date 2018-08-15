@@ -30,10 +30,4 @@ public class LoginPage extends BasePage {
         return new MyAccount(driver());
     }
 
-    /*public void performLogin(String a, String b){
-        driver.findElement(emailAddress).sendKeys(a);
-        driver.findElement(password).sendKeys(b);
-        driver.findElement(signInButton).click();
-    }*/
-
 }

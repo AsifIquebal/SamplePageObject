@@ -24,7 +24,7 @@ public class TestCase2 extends BaseTest {
         Assert.assertEquals(getPageTitle(),"Evening Dresses - My Store");*/
     }
 
-    //@Test
+    @Test
     public void NavigateToWomenEveningDressSection2() throws InterruptedException {
         homePage = LaunchApplication();
         eveningDresses = homePage.openWomenEveningDressMenu();

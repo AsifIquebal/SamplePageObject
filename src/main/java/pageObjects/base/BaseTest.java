@@ -56,7 +56,7 @@ public abstract class BaseTest {
             //Exception exception = new Exception()
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
-            if(OS == "linux"){
+            if(OS.equals("linux")){
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
             } else {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");

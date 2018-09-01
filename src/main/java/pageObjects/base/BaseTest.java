@@ -35,9 +35,11 @@ public abstract class BaseTest {
         String OS = System.getProperty("os.name").toLowerCase();
         log.info("Running on Platform: " + OS);
         if (browser.equalsIgnoreCase("Chrome")) {
-            if(OS == "linux"){
+            if(OS.equals("linux")){
+                System.out.println("On Linux, getting Chromedriver file");
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             } else {
+                System.out.println("On Windows, getting Chromedriver file");
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
             }
             ChromeOptions options = new ChromeOptions();

@@ -6,3 +6,4 @@ jdk:
 before_script:
   "sh chmod +x /home/travis/build/AsifIquebal/SamplePageObject/src/main/resources/drivers/chromedriver"
   - sleep 3
+ 

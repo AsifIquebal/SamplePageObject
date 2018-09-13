@@ -14,7 +14,6 @@ import java.io.IOException;
 public class TestCase1 extends ThreadLocalBase {
     HomePage homePage;
 
-
     @Test(dataProvider = "dp")
     public void simpleSearch(String string) {
         homePage = LaunchApplication();
@@ -22,7 +21,6 @@ public class TestCase1 extends ThreadLocalBase {
                 .enterSearchQuery(string)
                 .clickOnSearchInButton();
     }
-
 
     @DataProvider(name = "dp", parallel = true)
     public Object[][] getData() {
@@ -84,5 +82,3 @@ public class TestCase1 extends ThreadLocalBase {
         };
     }*/
 }
-
-

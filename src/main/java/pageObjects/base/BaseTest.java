@@ -74,22 +74,22 @@ public abstract class BaseTest {
 
     // Launch the Application
     public HomePage LaunchApplication() {
-        driver.get("http://automationpractice.com");
+        driver().get("http://automationpractice.com");
         return new HomePage(driver());
     }
 
     public LoginPage clickOnSignInLink() {
-        MyWrapper.click(driver, signInLink);
-        return new LoginPage(driver);
+        MyWrapper.click(driver(), signInLink);
+        return new LoginPage(driver());
     }
 
     public void clickOnSignOutLink() {
-        MyWrapper.click(driver, signOut);
+        MyWrapper.click(driver(), signOut);
     }
 
     public void moveMouse(By by) throws InterruptedException {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(by)).build().perform();
+        Actions actions = new Actions(driver());
+        actions.moveToElement(driver().findElement(by)).build().perform();
         Thread.sleep(2000);
     }
 

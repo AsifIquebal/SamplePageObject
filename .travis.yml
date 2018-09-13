@@ -1,4 +1,8 @@
 language: java
 
-java:
-  - 1.8
+jdk:
+- oraclejdk8
+
+before_script:
+  "sh chmod +x /home/travis/build/AsifIquebal/SamplePageObject/src/main/resources/drivers/chromedriver"
+  - sleep 3

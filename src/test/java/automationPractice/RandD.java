@@ -7,7 +7,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import pageObjects.base.BaseTest;
 
+import java.io.*;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
 public class RandD extends BaseTest {
 
@@ -59,4 +62,59 @@ public class RandD extends BaseTest {
         Integer i = new Integer(99);
     }
 
+    @Test
+    public void shellCommand() throws IOException, InterruptedException {
+        boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
+        ProcessBuilder builder = new ProcessBuilder();
+        if (isWindows) {
+            builder.command("cmd.exe", "/c", "dir");
+        } else {
+            builder.command("sh", "-c", "ls");
+        }
+        builder.directory(new File(System.getProperty("user.home")));
+        Process process = builder.start();
+        StreamGobbler streamGobbler =
+                new StreamGobbler(process.getInputStream(), System.out::println);
+        Executors.newSingleThreadExecutor().submit(streamGobbler);
+        int exitCode = process.waitFor();
+        assert exitCode == 0;
+    }
+    @Test
+    public void shellCommandToSetPermission() throws IOException, InterruptedException {
+        boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
+        ProcessBuilder builder = new ProcessBuilder();
+        String pathToChromeDriver = System.getProperty("user.dir")+"/src/main/resources/drivers/chromedriver";
+        System.out.println(pathToChromeDriver);
+        if (isWindows) {
+            builder.command("cmd.exe", "/c", "dir");
+        } else {
+            builder.command("sh", "-c","chmod +x '" + pathToChromeDriver+"'");
+        }
+        //builder.directory(new File(System.getProperty("user.home")));
+        Process process = builder.start();
+        StreamGobbler streamGobbler =
+                new StreamGobbler(process.getInputStream(), System.out::println);
+        Executors.newSingleThreadExecutor().submit(streamGobbler);
+        int exitCode = process.waitFor();
+        assert exitCode == 0;
+    }
+    //chmod +x '/home/asif/Desktop/Study/TeamCity/buildAgent/work/8c05eaa99dca520a/src/main/resources/drivers/chromedriver'
+    private static class StreamGobbler implements Runnable {
+        private InputStream inputStream;
+        private Consumer<String> consumer;
+
+        public StreamGobbler(InputStream inputStream, Consumer<String> consumer) {
+            this.inputStream = inputStream;
+            this.consumer = consumer;
+        }
+
+        @Override
+        public void run() {
+            new BufferedReader(new InputStreamReader(inputStream)).lines()
+                    .forEach(consumer);
+        }
+    }
+
 }
+
+

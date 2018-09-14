@@ -16,6 +16,13 @@ import pageObjects.automationPractice.HomePage;
 import pageObjects.automationPractice.LoginPage;
 import utility.MyWrapper;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
+
 public abstract class BaseTest {
 
     public final static Logger log = LogManager.getLogger();
@@ -31,13 +38,23 @@ public abstract class BaseTest {
 
     @BeforeClass
     @Parameters("browser")
-    public void launchBrowser(@Optional("Chrome") String browser) {
+    public void launchBrowser(@Optional("Chrome") String browser) throws IOException, InterruptedException {
         String OS = System.getProperty("os.name").toLowerCase();
         log.info("Running on Platform: " + OS);
         if (browser.equalsIgnoreCase("Chrome")) {
             if(OS.equals("linux")){
                 System.out.println("On Linux, getting Chromedriver file");
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
+                ProcessBuilder builder = new ProcessBuilder();
+                String pathToChromeDriver = System.getProperty("user.dir")+"/src/main/resources/drivers/chromedriver";
+                System.out.println(pathToChromeDriver);
+                builder.command("sh", "-c","chmod +x '" + pathToChromeDriver+"'");
+                Process process = builder.start();
+                StreamGobbler streamGobbler =
+                        new StreamGobbler(process.getInputStream(), System.out::println);
+                Executors.newSingleThreadExecutor().submit(streamGobbler);
+                int exitCode = process.waitFor();
+                assert exitCode == 0;
+                System.setProperty("webdriver.chrome.driver", pathToChromeDriver);
             } else {
                 System.out.println("On Windows, getting Chromedriver file");
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
@@ -99,6 +116,22 @@ public abstract class BaseTest {
     public void tearDown() {
         if (driver != null) {
             driver.quit();
+        }
+    }
+
+    private static class StreamGobbler implements Runnable {
+        private InputStream inputStream;
+        private Consumer<String> consumer;
+
+        public StreamGobbler(InputStream inputStream, Consumer<String> consumer) {
+            this.inputStream = inputStream;
+            this.consumer = consumer;
+        }
+
+        @Override
+        public void run() {
+            new BufferedReader(new InputStreamReader(inputStream)).lines()
+                    .forEach(consumer);
         }
     }
 

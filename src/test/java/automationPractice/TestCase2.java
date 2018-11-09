@@ -10,22 +10,16 @@ import pageObjects.base.BaseTest;
 public class TestCase2 extends BaseTest {
 
     HomePage homePage;
-    LoginPage loginPage;
     EveningDresses eveningDresses;
 
     @Test
-    public void NavigateToWomenEveningDressSection2() throws InterruptedException {
+    public void NavigateToWomenEveningDressSection2() {
         homePage = LaunchApplication();
+        log.info("Current URL: " + homePage.getURL());
         eveningDresses = homePage.openWomenEveningDressMenu();
+        log.info("Current URL: " + eveningDresses.getURL());
         Assert.assertEquals(eveningDresses.getPageTitle(), "Evening Dresses - My Store");
     }
-
-    @Test
-    public void test123(){
-
-    }
-
-
 
 
 

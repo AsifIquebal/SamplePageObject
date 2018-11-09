@@ -10,7 +10,7 @@ public abstract class BasePage {
         this.driver = driver;
     }
 
-    public WebDriver driver() {
+    protected WebDriver driver() {
         return driver;
     }
 
@@ -18,6 +18,11 @@ public abstract class BasePage {
     // Get Page Title
     public String getPageTitle() {
         return driver.getTitle();
+    }
+
+    // Get Page URL
+    public String getURL(){
+        return driver().getCurrentUrl();
     }
 
 }

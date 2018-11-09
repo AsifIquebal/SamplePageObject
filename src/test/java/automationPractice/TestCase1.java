@@ -6,6 +6,7 @@ import pageObjects.automationPractice.LoginPage;
 import pageObjects.automationPractice.MyAccount;
 import pageObjects.automationPractice.MyAddresses;
 import pageObjects.base.BaseTest;
+import utility.MyUtils;
 
 public class TestCase1 extends BaseTest {
     LoginPage loginPage;
@@ -16,15 +17,17 @@ public class TestCase1 extends BaseTest {
     public void openLoginPageTest() {
         LaunchApplication();
         loginPage = clickOnSignInLink();
+        log.info("Current URL: " + loginPage.getURL());
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
 
     @Test(dependsOnMethods = "openLoginPageTest")
     public void loginTest() {
         loginPage
-                .enterEmail("asu9421@gmail.com")
-                .enterPassword("aut555");
+                .enterEmail(MyUtils.getPropertiesFile().getProperty("username"))
+                .enterPassword(MyUtils.getPropertiesFile().getProperty("password"));
         myAccount = loginPage.clickOnSignInButton();
+        log.info("Current URL: " + myAccount.getURL());
         Assert.assertEquals(myAccount.getPageTitle(), "My account - My Store");
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="testSuite">
+<suite name="testSuite" configfailurepolicy="continue">
     <test name="myTest">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>

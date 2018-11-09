@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -81,5 +82,11 @@ public class MyWrapper {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(element));
         return wait;
+    }
+
+    public void moveMouse(WebDriver driver, By by) throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(by)).build().perform();
+        Thread.sleep(2000);
     }
 }

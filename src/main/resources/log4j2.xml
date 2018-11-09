@@ -4,12 +4,13 @@
 <Configuration status="INFO">
 
     <Appenders>
+
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss,SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
 
-        <File name="log4j2LogFile" fileName="PageObjectModel/app.log">
-            <PatternLayout pattern=" asif %d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <File name="log4j2LogFile" fileName="app.log">
+            <PatternLayout pattern=" asif %d{yyyy-MMM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
     </Appenders>

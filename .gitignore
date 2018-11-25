@@ -1,3 +1,4 @@
 target/
 src/test/java/automationPractice/MyClass.java
 src/test/java/automationPractice/RandD_2.java
+**.log

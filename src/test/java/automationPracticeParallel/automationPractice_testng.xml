@@ -1,10 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="testSuite">
     <!--<suite name="testSuite" parallel="tests" thread-count="2">-->
-
+    <listeners>
+        <!--<listener class-name="automationPracticeParallel.MyTransformer"/>-->
+    </listeners>
     <test name="myTest">
         <classes>
-            <class name="automationPracticeParallel.TestCase1">
+            <!--<class name="automationPracticeParallel.TestCase1">-->
+            <!--<class name="automationPracticeParallel.TestCase2">-->
+            <class name="automationPracticeParallel.TestCase3">
                 <!--<methods>
                     <include name="simpleSearch1"></include>
                 </methods>-->

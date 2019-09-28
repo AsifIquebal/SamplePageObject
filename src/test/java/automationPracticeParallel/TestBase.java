@@ -40,7 +40,7 @@ public class TestBase {
         }
     }
 
-    public String getFlag(){
+    public String getFlag() {
         return flag;
     }
 

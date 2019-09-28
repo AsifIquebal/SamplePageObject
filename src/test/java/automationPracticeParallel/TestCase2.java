@@ -15,7 +15,7 @@ public class TestCase2 {
     public void firstTest() throws InterruptedException {
         System.out.println("Getting Ready...");
         Thread.sleep(5000);
-        System.out.println("Test with data: "+username+" and "+password + ", Thread: " + Thread.currentThread().getId());
+        System.out.println("Test with data: " + username + " and " + password + ", Thread: " + Thread.currentThread().getId());
         System.out.println("Done...");
     }
 

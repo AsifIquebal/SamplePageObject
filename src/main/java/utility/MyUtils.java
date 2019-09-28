@@ -11,7 +11,7 @@ public class MyUtils {
         Properties prop = new Properties();
         InputStream input = null;
         try {
-            input = new FileInputStream(System.getProperty("user.dir")+"/config.properties");
+            input = new FileInputStream(System.getProperty("user.dir") + "/config.properties");
             prop.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();

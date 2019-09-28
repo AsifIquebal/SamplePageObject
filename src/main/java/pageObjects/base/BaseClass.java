@@ -31,7 +31,7 @@ public class BaseClass {
 
     @BeforeClass
     @Parameters("browser")
-    public void launchBrowser(@Optional("Chrome") String browser) {
+    public void launchBrowser(@Optional("firefox") String browser) {
         if (browser.equalsIgnoreCase("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             //System.setProperty("webdriver.chrome.driver", "Selenium\\parentResource\\drivers\\chromedriver.exe");

@@ -12,10 +12,7 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pageObjects.automationPractice.HomePage;
 import pageObjects.automationPractice.LoginPage;
 import utility.MyWrapper;
@@ -29,6 +26,8 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 import java.util.logging.Level;
+
+import static java.lang.String.*;
 
 public abstract class BaseTest {
 
@@ -47,16 +46,16 @@ public abstract class BaseTest {
 
     @BeforeClass
     @Parameters("browser")
-    public void launchBrowser(@Optional("Chrome") String browser) throws IOException, InterruptedException {
+    public void launchBrowser(@Optional("firefox") String browser) throws IOException, InterruptedException {
         String OS = System.getProperty("os.name").toLowerCase();
         log.info("Running on Platform: " + OS);
         if (browser.equalsIgnoreCase("chrome")) {
-            if(OS.equals("linux")){
+            if (OS.equals("linux")) {
                 log.info("On Linux, getting Chromedriver file");
                 ProcessBuilder builder = new ProcessBuilder();
                 String pathToChromeDriver = Constants.CHROME_DRIVER_PATH_LINUX;
                 log.info("driver path: " + pathToChromeDriver);
-                builder.command("sh", "-c","chmod +x '" + pathToChromeDriver+"'");
+                builder.command("sh", "-c", "chmod +x '" + pathToChromeDriver + "'");
                 Process process = builder.start();
                 StreamGobbler streamGobbler = new StreamGobbler(process.getInputStream(), System.out::println);
                 Executors.newSingleThreadExecutor().submit(streamGobbler);
@@ -85,8 +84,18 @@ public abstract class BaseTest {
             //options.setExperimentalOption("perfLoggingPrefs", chromePrefs);
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
-            if(OS.equals("linux")){
-                System.setProperty("webdriver.gecko.driver", Constants.GECKO_DRIVER_PATH_LINUX);
+            if (OS.equals("linux")) {
+                log.info("On Linux, getting GeckoDriver file");
+                ProcessBuilder builder = new ProcessBuilder();
+                String pathToGeckoDriver = Constants.GECKO_DRIVER_PATH_LINUX;
+                log.info("driver path: " + pathToGeckoDriver);
+                builder.command("sh", "-c", "chmod +x '" + pathToGeckoDriver + "'");
+                Process process = builder.start();
+                StreamGobbler streamGobbler = new StreamGobbler(process.getInputStream(), System.out::println);
+                Executors.newSingleThreadExecutor().submit(streamGobbler);
+                int exitCode = process.waitFor();
+                assert exitCode == 0;
+                System.setProperty("webdriver.gecko.driver", pathToGeckoDriver);
             } else {
                 System.setProperty("webdriver.gecko.driver", Constants.GECKO_DRIVER_PATH_WINDOWS);
             }
@@ -95,7 +104,6 @@ public abstract class BaseTest {
             new RuntimeException("Didn't found Driver...");
         }
     }
-
 
 
     private static DesiredCapabilities getPerformanceLoggingCapabilities() {
@@ -148,7 +156,7 @@ public abstract class BaseTest {
         System.out.println(chromePrefs);
     }
 
-    private static class StreamGobbler implements Runnable {
+    public static class StreamGobbler implements Runnable {
         private InputStream inputStream;
         private Consumer<String> consumer;
 

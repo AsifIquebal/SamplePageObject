@@ -21,7 +21,7 @@ public abstract class BasePage {
     }
 
     // Get Page URL
-    public String getURL(){
+    public String getURL() {
         return driver().getCurrentUrl();
     }
 

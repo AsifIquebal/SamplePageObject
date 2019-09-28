@@ -22,7 +22,7 @@ public class ThreadLocalBase {
     public void setDriverThreadLocal(@Optional("Chrome") String browser) {
         String OS = System.getProperty("os.name").toLowerCase();
         if (browser.equalsIgnoreCase("Chrome")) {
-            if(OS == "linux"){
+            if (OS == "linux") {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             } else {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
@@ -32,7 +32,7 @@ public class ThreadLocalBase {
             //options.addArguments("--start-maximized");
             driver = new ChromeDriver(options);
         } else if (browser.equals("firefox")) {
-            if(OS == "linux"){
+            if (OS == "linux") {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
             } else {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");

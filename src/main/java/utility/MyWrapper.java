@@ -18,6 +18,7 @@ public class MyWrapper {
     public static void sendKeys(WebDriver driver, By by, String valueToType) {
         try {
             new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(by));
+            //wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));
             JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).clear();
             driver.findElement(by).sendKeys(valueToType);

@@ -36,8 +36,6 @@ public class TestLogging {
         options.setExperimentalOption("perfLoggingPrefs", perfLogPrefs);
         //capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-
-
         System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_LINUX);
         options.addArguments("--headless","--disable-gpu");
         WebDriver driver = new ChromeDriver(options);*/

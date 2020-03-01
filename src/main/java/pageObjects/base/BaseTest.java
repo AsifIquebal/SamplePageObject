@@ -46,7 +46,7 @@ public abstract class BaseTest {
 
     @BeforeClass
     @Parameters("browser")
-    public void launchBrowser(@Optional("firefox") String browser) throws IOException, InterruptedException {
+    public void launchBrowser(@Optional("chrome") String browser) throws IOException, InterruptedException {
         String OS = System.getProperty("os.name").toLowerCase();
         log.info("Running on Platform: " + OS);
         if (browser.equalsIgnoreCase("chrome")) {
@@ -66,23 +66,7 @@ public abstract class BaseTest {
                 log.info("On Windows, getting Chromedriver file");
                 System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_WINDOWS);
             }
-            ChromeOptions options = new ChromeOptions();
-            //options.setAcceptInsecureCerts(true);
-            //options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-            //disable automation info bar
-            options.addArguments("disable-infobars");
-            // Start in Maximized mode
-            options.addArguments("--start-maximized");
-            options.addArguments("--no-sandbox"); // Bypass OS security model
-            options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-            options.addArguments("allow-running-insecure-content");
-            /*Headless on Windows, Check periodically for any modification*/
-            /*If you are using chromedriver in headless mode on Linux platform the argument disable-gpu is crucial and mandatory.*/
-            //options.addArguments("--headless","--disable-gpu");
-            //Exception exception = new Exception()
-            //options.addArguments("perfLoggingPrefs");
-            //options.setExperimentalOption("perfLoggingPrefs", chromePrefs);
-            driver = new ChromeDriver(options);
+            driver = new ChromeDriver(OptionsManager.getChromeOptions());
         } else if (browser.equals("firefox")) {
             if (OS.equals("linux")) {
                 log.info("On Linux, getting GeckoDriver file");
@@ -99,7 +83,7 @@ public abstract class BaseTest {
             } else {
                 System.setProperty("webdriver.gecko.driver", Constants.GECKO_DRIVER_PATH_WINDOWS);
             }
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(OptionsManager.getFirefoxOptions());
         } else {
             new RuntimeException("Didn't found Driver...");
         }

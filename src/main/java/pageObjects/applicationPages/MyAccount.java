@@ -1,4 +1,4 @@
-package pageObjects.automationPractice;
+package pageObjects.applicationPages;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

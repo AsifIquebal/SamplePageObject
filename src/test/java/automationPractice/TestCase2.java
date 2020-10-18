@@ -2,9 +2,8 @@ package automationPractice;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.automationPractice.EveningDresses;
-import pageObjects.automationPractice.HomePage;
-import pageObjects.automationPractice.LoginPage;
+import pageObjects.applicationPages.EveningDresses;
+import pageObjects.applicationPages.HomePage;
 import pageObjects.base.BaseTest;
 
 public class TestCase2 extends BaseTest {

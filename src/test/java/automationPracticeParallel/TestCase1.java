@@ -4,7 +4,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageObjects.automationPractice.HomePage;
+import pageObjects.applicationPages.HomePage;
 import pageObjects.base.ThreadLocalBase;
 
 import java.io.FileInputStream;

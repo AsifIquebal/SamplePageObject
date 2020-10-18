@@ -7,14 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import pageObjects.automationPractice.HomePage;
-import pageObjects.automationPractice.LoginPage;
+import pageObjects.applicationPages.HomePage;
+import pageObjects.applicationPages.LoginPage;
 import utility.MyWrapper;
 
 import java.io.BufferedReader;
@@ -26,8 +25,6 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 import java.util.logging.Level;
-
-import static java.lang.String.*;
 
 public abstract class BaseTest {
 
@@ -136,7 +133,7 @@ public abstract class BaseTest {
         if (driver != null) {
             driver.quit();
         }
-        System.out.println("------------------------LOGS");
+        System.out.println("chromePrefs------------------------");
         System.out.println(chromePrefs);
     }
 

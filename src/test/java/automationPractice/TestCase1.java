@@ -1,20 +1,17 @@
 package automationPractice;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.applicationPages.*;
+import pageObjects.applicationPages.LoginPage;
+import pageObjects.applicationPages.MyAccount;
+import pageObjects.applicationPages.MyAddresses;
 import pageObjects.base.BaseTest;
-import pageObjects.base.Constants;
 import utility.MyUtils;
 
 public class TestCase1 extends BaseTest {
     LoginPage loginPage;
     MyAccount myAccount;
     String addressTitle = "AsusAddress";
-
 
     @Test
     public void openLoginPageTest() {
@@ -61,14 +58,5 @@ public class TestCase1 extends BaseTest {
         clickOnSignOutLink();
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
-
-    /*@Test
-    public void failedTest(){
-        driver.get("https://www.google.com");
-        //getScreenShot("sample screen shot");
-        Reporter.log("Hi Asif, this is from TestNGRelated Reporter Log");
-        Assert.assertEquals("1","2");
-    }*/
-
 
 }

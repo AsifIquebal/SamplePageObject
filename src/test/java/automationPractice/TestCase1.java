@@ -67,11 +67,4 @@ public class TestCase1 extends BaseTest {
         Assert.assertEquals("1","2");
     }*/
 
-    @Test
-    public void test_01(){
-        System.out.println("Hello");
-    }
-
 }
-
-

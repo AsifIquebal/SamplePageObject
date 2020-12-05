@@ -25,13 +25,17 @@ public class OptionsManager {
         //disable automation info bar
         options.addArguments("disable-infobars");
         // Start in Maximized mode
-        options.addArguments("--start-maximized");
+        //options.addArguments("--start-maximized");
         options.addArguments("--no-sandbox"); // Bypass OS security model
         options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
         options.addArguments("allow-running-insecure-content");
         /*Headless on Windows, Check periodically for any modification*/
         /*If you are using chromedriver in headless mode on Linux platform the argument disable-gpu is crucial and mandatory.*/
         //options.addArguments("--headless","--disable-gpu");
+        // or options.setHeadless(true);
+        // You should set window size for better resolution and screen capture
+        //options.addArguments("window-size=1200x600");
+
         //Exception exception = new Exception()
         //options.addArguments("perfLoggingPrefs");
         //options.setExperimentalOption("perfLoggingPrefs", chromePrefs);

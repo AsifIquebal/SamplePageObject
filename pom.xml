@@ -22,7 +22,7 @@
         <junit.version>4.12</junit.version>
         <cucumber.version>1.2.4</cucumber.version>
         <jsoup.version>1.11.2</jsoup.version>
-        <log4j.version>2.10.0</log4j.version>
+        <log4j.version>2.14.0</log4j.version>
         <aspectj.version>1.8.10</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

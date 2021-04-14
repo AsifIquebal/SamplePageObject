@@ -2,15 +2,9 @@ package pageObjects.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import pageObjects.applicationPages.LoginPage;
+import pageObjects.automationPracticePageObjects.LoginPage;
 import utility.MyWrapper;
 
 public class BaseClass {

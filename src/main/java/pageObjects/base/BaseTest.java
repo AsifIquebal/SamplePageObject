@@ -12,8 +12,8 @@ import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import pageObjects.applicationPages.HomePage;
-import pageObjects.applicationPages.LoginPage;
+import pageObjects.automationPracticePageObjects.HomePage;
+import pageObjects.automationPracticePageObjects.LoginPage;
 import utility.MyWrapper;
 
 import java.io.BufferedReader;
@@ -106,7 +106,6 @@ public abstract class BaseTest {
 
         return caps;
     }
-    // Menu-Sub Menu Navigation
 
     // all the classes which extends this class will be able to use this method
     protected WebDriver driver() {

@@ -32,8 +32,9 @@ public class OptionsManager {
         /*Headless on Windows, Check periodically for any modification*/
         /*If you are using chromedriver in headless mode on Linux platform the argument disable-gpu is crucial and mandatory.*/
         //options.addArguments("--headless","--disable-gpu");
-        // or options.setHeadless(true);
-        // You should set window size for better resolution and screen capture
+        // or
+        options.setHeadless(true);
+        // set window size for better resolution and screen capture
         //options.addArguments("window-size=1200x600");
 
         //Exception exception = new Exception()

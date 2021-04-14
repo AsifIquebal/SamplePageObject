@@ -3,7 +3,7 @@
     <test name="myTest">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
-            <class name="automationPractice.TestCase1"/>
+            <class name="automationPractice.com.asif.spring.TestCase1"/>
             <class name="automationPractice.TestCase2"/>
 
         </classes>

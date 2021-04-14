@@ -7,7 +7,7 @@
     </listeners>
     <test name="myTest">
         <classes>
-            <!--<class name="automationPracticeParallel.TestCase1">-->
+            <!--<class name="automationPracticeParallel.com.asif.spring.TestCase1">-->
             <!--<class name="automationPracticeParallel.TestCase2">-->
             <class name="automationPracticeParallel.TestCase3">
                 <!--<methods>
@@ -19,7 +19,7 @@
 
     <!--<test name="myTest1">
         <classes>
-            <class name="automationPracticeParallel.TestCase1">
+            <class name="automationPracticeParallel.com.asif.spring.TestCase1">
                 <methods>
                     <include name="simpleSearch1"></include>
                 </methods>

@@ -2,9 +2,9 @@ package automationPractice;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.applicationPages.LoginPage;
-import pageObjects.applicationPages.MyAccount;
-import pageObjects.applicationPages.MyAddresses;
+import pageObjects.automationPracticePageObjects.LoginPage;
+import pageObjects.automationPracticePageObjects.MyAccount;
+import pageObjects.automationPracticePageObjects.MyAddresses;
 import pageObjects.base.BaseTest;
 import utility.MyUtils;
 

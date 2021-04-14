@@ -1,4 +1,4 @@
-package pageObjects.applicationPages;
+package pageObjects.automationPracticePageObjects;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.base.BasePage;

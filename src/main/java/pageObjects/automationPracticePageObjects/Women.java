@@ -1,7 +1,7 @@
 package pageObjects.automationPracticePageObjects;
 
 import org.openqa.selenium.WebDriver;
-import pageObjects.base.BasePage;
+import base.BasePage;
 
 public class Women extends BasePage {
 

@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import pageObjects.base.BasePage;
+import base.BasePage;
 import utility.MyWrapper;
 
 public class MyAddresses extends BasePage {

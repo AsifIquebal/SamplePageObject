@@ -3,18 +3,10 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <!--<parent>
-        <artifactId>Selenium</artifactId>
-        <groupId>asus</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>-->
-
     <groupId>asus</groupId>
-    <artifactId>PageObjectModel</artifactId>
+    <artifactId>samplePageObject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!--IF USING PARENT THEN COMMENT THE PROPERTIES SECTION-->
     <properties>
         <selenium.version>3.141.59</selenium.version>
         <testng.version>6.14.3</testng.version>

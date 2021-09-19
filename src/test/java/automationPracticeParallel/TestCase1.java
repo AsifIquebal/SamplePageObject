@@ -5,7 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.automationPracticePageObjects.HomePage;
-import pageObjects.base.ThreadLocalBase;
+import base.ThreadLocalBase;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ public class TestCase1 extends ThreadLocalBase {
 
     @Test(dataProvider = "dp")
     public void simpleSearch(String string) {
-        homePage = LaunchApplication();
+        homePage = launchApplication();
         homePage
                 .enterSearchQuery(string)
                 .clickOnSearchInButton();

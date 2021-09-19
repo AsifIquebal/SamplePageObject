@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pageObjects.automationPracticePageObjects.LoginPage;
 import pageObjects.automationPracticePageObjects.MyAccount;
 import pageObjects.automationPracticePageObjects.MyAddresses;
-import pageObjects.base.BaseTest;
+import base.BaseTest;
 import utility.MyUtils;
 
 public class TestCase1 extends BaseTest {
@@ -15,7 +15,7 @@ public class TestCase1 extends BaseTest {
 
     @Test
     public void openLoginPageTest() {
-        LaunchApplication();
+        launchApplication();
         loginPage = clickOnSignInLink();
         log.info("Current URL: " + loginPage.getURL());
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");

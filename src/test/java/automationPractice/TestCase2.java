@@ -10,8 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.automationPracticePageObjects.EveningDresses;
 import pageObjects.automationPracticePageObjects.HomePage;
-import pageObjects.base.BaseTest;
-import pageObjects.base.Constants;
+import base.BaseTest;
+import base.Constants;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -27,7 +27,7 @@ public class TestCase2 extends BaseTest {
 
     @Test
     public void NavigateToWomenEveningDressSection2() {
-        homePage = LaunchApplication();
+        homePage = launchApplication();
         log.info("Current URL: " + homePage.getURL());
         eveningDresses = homePage.openWomenEveningDressMenu();
         log.info("Current URL: " + eveningDresses.getURL());
@@ -53,7 +53,7 @@ public class TestCase2 extends BaseTest {
 
     @Test
     public void playWithWindowSize() {
-        homePage = LaunchApplication();
+        homePage = launchApplication();
         log.info("Default Window size at Launch: " + driver().manage().window().getSize());
         driver().manage().window().maximize();
         log.info("Browser window when Maximized: " + driver().manage().window().getSize());
@@ -67,7 +67,7 @@ public class TestCase2 extends BaseTest {
 
     @Test
     public void runHeadLessAndGetScreenShot() throws IOException {
-        homePage = LaunchApplication();
+        homePage = launchApplication();
         driver().manage().window().fullscreen();
         File srcFile = ((TakesScreenshot) driver()).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(srcFile, new File("sampleSS.png"));

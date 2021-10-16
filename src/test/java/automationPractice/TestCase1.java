@@ -1,11 +1,11 @@
 package automationPractice;
 
+import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.automationPracticePageObjects.LoginPage;
 import pageObjects.automationPracticePageObjects.MyAccount;
 import pageObjects.automationPracticePageObjects.MyAddresses;
-import base.BaseTest;
 import utility.MyUtils;
 
 public class TestCase1 extends BaseTest {

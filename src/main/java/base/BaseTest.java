@@ -3,15 +3,20 @@ package base;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import pageObjects.automationPracticePageObjects.HomePage;
 import pageObjects.automationPracticePageObjects.LoginPage;
 import utility.MyWrapper;
@@ -38,6 +43,7 @@ public abstract class BaseTest {
     By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
     private WebDriver driver;
     private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
+
 
     @BeforeClass
     @Parameters("browser")
@@ -84,7 +90,7 @@ public abstract class BaseTest {
         }
     }
 
-    private static DesiredCapabilities getPerformanceLoggingCapabilities() {
+    /*private static DesiredCapabilities getPerformanceLoggingCapabilities() {
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         // Enable performance logging
         LoggingPreferences logPrefs = new LoggingPreferences();
@@ -99,15 +105,19 @@ public abstract class BaseTest {
         //chromeOptions.put("debuggerAddress", "127.0.0.1:10134");
         caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         return caps;
-    }
+    }*/
 
     protected WebDriver driver() {
         return driver;
     }
 
     public HomePage launchApplication() {
+
         driver().get(Constants.APP_URL);
         return new HomePage(driver());
+
+
+
     }
 
     public LoginPage clickOnSignInLink() {
@@ -131,10 +141,12 @@ public abstract class BaseTest {
     public static class StreamGobbler implements Runnable {
         private InputStream inputStream;
         private Consumer<String> consumer;
+
         public StreamGobbler(InputStream inputStream, Consumer<String> consumer) {
             this.inputStream = inputStream;
             this.consumer = consumer;
         }
+
         @Override
         public void run() {
             new BufferedReader(new InputStreamReader(inputStream)).lines().forEach(consumer);

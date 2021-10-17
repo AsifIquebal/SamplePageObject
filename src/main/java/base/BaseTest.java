@@ -3,16 +3,9 @@ package base;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -29,7 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
-import java.util.logging.Level;
 
 public abstract class BaseTest {
 
@@ -37,13 +29,8 @@ public abstract class BaseTest {
 
     public final static Logger log = LogManager.getLogger();
     By signInLink = By.xpath("//a[normalize-space()='Sign in']");
-    By DressesMenu = By.xpath("//a[@title='Dresses']");
-    By TShirtsMenu = By.xpath("//a[@title='T-shirts']");
-    By Women_CasualDress = By.xpath("//a[@title='Women']/..//a[@title='Casual Dresses']");
-    By Women_SummerDresses = By.xpath("//a[@title='Women']/..//a[@title='Summer Dresses']");
     private WebDriver driver;
     private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
-
 
     @BeforeClass
     @Parameters("browser")
@@ -112,12 +99,8 @@ public abstract class BaseTest {
     }
 
     public HomePage launchApplication() {
-
         driver().get(Constants.APP_URL);
         return new HomePage(driver());
-
-
-
     }
 
     public LoginPage clickOnSignInLink() {

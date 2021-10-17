@@ -17,9 +17,9 @@ public class MyWrapper {
 
     public static void sendKeys(WebDriver driver, By by, String valueToType) {
         try {
-            new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(by));
+            new WebDriverWait(driver, Duration.ofSeconds(waitTime)).until(ExpectedConditions.visibilityOfElementLocated(by));
             //wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));
-            JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
+            //JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).clear();
             driver.findElement(by).sendKeys(valueToType);
         } catch (NoSuchElementException ex) {
@@ -30,8 +30,8 @@ public class MyWrapper {
             Assert.fail();
         } catch (Exception ex) {
             //when(ex is StaleElementReferenceException) find element again and retry
-            new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(by));
-            JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
+            new WebDriverWait(driver, Duration.ofSeconds(waitTime)).until(ExpectedConditions.visibilityOfElementLocated(by));
+            //JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).clear();
             driver.findElement(by).sendKeys(valueToType);
             //ex.printStackTrace();
@@ -40,7 +40,7 @@ public class MyWrapper {
 
     public static void click(WebDriver driver, By by) {
         try {
-            WebDriverWait mw = new WebDriverWait(driver, waitTime);
+            WebDriverWait mw = new WebDriverWait(driver, Duration.ofSeconds(waitTime));
             mw.until(ExpectedConditions.visibilityOfElementLocated(by));
             JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).click();
@@ -48,7 +48,7 @@ public class MyWrapper {
             System.out.println("Could not perform SendKeys on element identified by " + by.toString());
             Assert.fail();
         } catch (Exception ex) {
-            new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(by));
+            new WebDriverWait(driver, Duration.ofSeconds(waitTime)).until(ExpectedConditions.visibilityOfElementLocated(by));
             JavaScriptUtils.scrollIntoView(driver.findElement(by), driver);
             driver.findElement(by).click();
         }
@@ -74,13 +74,13 @@ public class MyWrapper {
     }
 
     public static WebDriverWait waitExplicit(WebDriver driver, By by) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
         return wait;
     }
 
     public static WebDriverWait waitExplicit(WebDriver driver, WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(element));
         return wait;
     }

@@ -1,5 +1,6 @@
 package utility;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -11,11 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-
+@Log4j2
 public class MyWrapper {
     private static final int waitTime = 15;
 
     public static void sendKeys(WebDriver driver, By by, String valueToType) {
+        log.info("Entering text: " + valueToType);
         try {
             new WebDriverWait(driver, Duration.ofSeconds(waitTime)).until(ExpectedConditions.visibilityOfElementLocated(by));
             //wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));

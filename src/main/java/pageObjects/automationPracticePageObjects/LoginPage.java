@@ -1,8 +1,8 @@
 package pageObjects.automationPracticePageObjects;
 
+import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import base.BasePage;
 import utility.MyWrapper;
 
 public class LoginPage extends BasePage {

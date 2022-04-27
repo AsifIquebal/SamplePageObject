@@ -1,48 +1,59 @@
 package base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageObjects.automationPracticePageObjects.HomePage;
+import pageObjects.HomePage;
+import pageObjects.LoginPage;
+import utility.MyWrapper;
 
 public class ThreadLocalBase {
 
-    WebDriver driver;
-
+    private WebDriver driver;
     ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    public final static Logger log = LogManager.getLogger();
+    By signInLink = By.xpath("//a[normalize-space()='Sign in']");
+    private By signOut = By.xpath("//div/a[normalize-space()='Sign out']");
 
     @BeforeMethod
     @Parameters("browser")
     public void setDriverThreadLocal(@Optional("Chrome") String browser) {
         String OS = System.getProperty("os.name").toLowerCase();
         if (browser.equalsIgnoreCase("Chrome")) {
-            if (OS == "linux") {
+            /*if (OS.equals("linux")) {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             } else {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-            }
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("disable-infobars");
-            //options.addArguments("--start-maximized");
-            driver = new ChromeDriver(options);
+            }*/
+            driver = setUpChrome();
         } else if (browser.equals("firefox")) {
-            if (OS == "linux") {
+            /*if (OS.equals("linux")) {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
             } else {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             }
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver();*/
+            driver = setUpFirefox();
         }
         driverThreadLocal.set(driver);
     }
 
-    public WebDriver getDriver() {
-        return driverThreadLocal.get();
+    private WebDriver setUpFirefox() {
+        WebDriverManager.firefoxdriver().cachePath(System.getProperty("user.dir") + "/src/test/resources/drivers").setup();
+        return new FirefoxDriver(OptionsManager.getFirefoxOptions());
+    }
+
+    private WebDriver setUpChrome() {
+        WebDriverManager.chromedriver().cachePath(System.getProperty("user.dir") + "/src/test/resources/drivers").setup();
+        return new ChromeDriver(OptionsManager.getChromeOptions());
     }
 
     @AfterMethod
@@ -51,9 +62,21 @@ public class ThreadLocalBase {
         driverThreadLocal.remove();
     }
 
+    public WebDriver getDriver() {
+        return driverThreadLocal.get();
+    }
+
     public HomePage launchApplication() {
         getDriver().get("http://automationpractice.com");
         return new HomePage(getDriver());
     }
 
+    public LoginPage clickOnSignInLink() {
+        MyWrapper.click(getDriver(), signInLink);
+        return new LoginPage(getDriver());
+    }
+
+    public void clickOnSignOutLink() {
+        MyWrapper.click(getDriver(), signOut);
+    }
 }

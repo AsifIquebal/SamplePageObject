@@ -1,4 +1,4 @@
-package pageObjects.automationPracticePageObjects;
+package pageObjects;
 
 import base.BasePage;
 import org.openqa.selenium.By;

@@ -1,14 +1,14 @@
 package automationPractice;
 
-import base.BaseTest;
+import base.ThreadLocalBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.automationPracticePageObjects.LoginPage;
-import pageObjects.automationPracticePageObjects.MyAccount;
-import pageObjects.automationPracticePageObjects.MyAddresses;
+import pageObjects.LoginPage;
+import pageObjects.MyAccount;
+import pageObjects.MyAddresses;
 import utility.MyUtils;
 
-public class TestCase1 extends BaseTest {
+public class TestCase1 extends ThreadLocalBase {
     LoginPage loginPage;
     MyAccount myAccount;
     String addressTitle = "AsusAddress";
@@ -21,7 +21,7 @@ public class TestCase1 extends BaseTest {
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
 
-    @Test(dependsOnMethods = "openLoginPageTest")
+    /*@Test(dependsOnMethods = "openLoginPageTest")
     public void loginTest() {
         loginPage
                 .enterEmail(MyUtils.getPropertiesFile().getProperty("username"))
@@ -57,6 +57,6 @@ public class TestCase1 extends BaseTest {
     public void performSignOut() {
         clickOnSignOutLink();
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
-    }
+    }*/
 
 }

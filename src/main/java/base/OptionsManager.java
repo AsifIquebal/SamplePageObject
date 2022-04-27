@@ -1,6 +1,5 @@
 package base;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,52 +7,37 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
-import static org.openqa.selenium.remote.CapabilityType.PAGE_LOAD_STRATEGY;
-
 public class OptionsManager {
 
-    public Capabilities capabilities;
-
-    public Capabilities getCapabilities (String browser) {
-        if (browser.equalsIgnoreCase("firefox"))
-            capabilities = getFirefoxOptions();
-        else if(browser.equalsIgnoreCase("chrome"))
-            capabilities = getChromeOptions();
-        return capabilities;
-    }
-
-    public static ChromeOptions getChromeOptions(){
-        ChromeOptions options = new ChromeOptions();
-        options.setAcceptInsecureCerts(true);
-        options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-        options.setHeadless(true);
-        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+    public static ChromeOptions getChromeOptions() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setAcceptInsecureCerts(true);
+        chromeOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+        /*Headless on Windows, Check periodically for any modification*/
+        chromeOptions.setHeadless(false);
+        /*If you are using chromedriver in headless mode on Linux platform the argument disable-gpu is crucial and mandatory.*/
+        //options.addArguments("--headless","--disable-gpu");
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         //options.setPageLoadTimeout();
         //options.setScriptTimeout();
         //options.setImplicitWaitTimeout();
         //disable automation info bar
-        options.addArguments("disable-infobars");
+        chromeOptions.addArguments("disable-infobars");
         // Start in Maximized mode
-        options.addArguments("--start-maximized");
-        options.addArguments("--no-sandbox"); // Bypass OS security model
-        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        options.addArguments("allow-running-insecure-content");
-        /*Headless on Windows, Check periodically for any modification*/
-        /*If you are using chromedriver in headless mode on Linux platform the argument disable-gpu is crucial and mandatory.*/
-        options.addArguments("--headless","--disable-gpu");
-        // or
-        options.setHeadless(true);
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--no-sandbox"); // Bypass OS security model
+        chromeOptions.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+        chromeOptions.addArguments("allow-running-insecure-content");
         // set window size for better resolution and screen capture
-        options.addArguments("window-size=1200x600");
-
+        chromeOptions.addArguments("window-size=1200x600");
         //Exception exception = new Exception()
-        options.addArguments("perfLoggingPrefs");
+        chromeOptions.addArguments("perfLoggingPrefs");
         //options.setExperimentalOption("perfLoggingPrefs", chromePrefs);
-        return options;
+        return chromeOptions;
     }
 
-    public static FirefoxOptions getFirefoxOptions () {
-        FirefoxOptions options = new FirefoxOptions();
+    public static FirefoxOptions getFirefoxOptions() {
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
         FirefoxProfile profile = new FirefoxProfile();
         //Accept Untrusted Certificates
         profile.setAcceptUntrustedCertificates(true);
@@ -61,8 +45,11 @@ public class OptionsManager {
         //Use No Proxy Settings
         profile.setPreference("network.proxy.type", 0);
         //Set Firefox profile to capabilities
-        options.setCapability(FirefoxDriver.PROFILE, profile);
-        return options;
+        firefoxOptions.setCapability(FirefoxDriver.PROFILE, profile);
+        //firefoxOptions.addPreference();
+        //
+        firefoxOptions.setHeadless(false);
+        return firefoxOptions;
     }
 
 }

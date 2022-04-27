@@ -10,8 +10,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageObjects.automationPracticePageObjects.HomePage;
-import pageObjects.automationPracticePageObjects.LoginPage;
+import pageObjects.HomePage;
+import pageObjects.LoginPage;
 import utility.MyWrapper;
 
 import java.io.BufferedReader;

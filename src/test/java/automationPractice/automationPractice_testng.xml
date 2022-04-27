@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="testSuite" configfailurepolicy="continue">
     <test name="myTest">
-        <parameter name="browser" value="Chrome"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="automationPractice.com.asif.spring.TestCase1"/>
-            <class name="automationPractice.TestCase2"/>
+            <class name="automationPractice.TestCase1"/>
+            <!--<class name="automationPractice.TestCase2"/>-->
 
         </classes>
     </test>

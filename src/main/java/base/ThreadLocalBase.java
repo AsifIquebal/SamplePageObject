@@ -28,19 +28,8 @@ public class ThreadLocalBase {
     public void setDriverThreadLocal(@Optional("Chrome") String browser) {
         String OS = System.getProperty("os.name").toLowerCase();
         if (browser.equalsIgnoreCase("Chrome")) {
-            /*if (OS.equals("linux")) {
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
-            } else {
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-            }*/
             driver = setUpChrome();
         } else if (browser.equals("firefox")) {
-            /*if (OS.equals("linux")) {
-                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
-            } else {
-                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
-            }
-            driver = new FirefoxDriver();*/
             driver = setUpFirefox();
         }
         driverThreadLocal.set(driver);
@@ -79,4 +68,5 @@ public class ThreadLocalBase {
     public void clickOnSignOutLink() {
         MyWrapper.click(getDriver(), signOut);
     }
+
 }

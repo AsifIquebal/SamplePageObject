@@ -21,7 +21,7 @@ public class TestCase1 extends ThreadLocalBase {
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
     }
 
-    /*@Test(dependsOnMethods = "openLoginPageTest")
+    @Test(dependsOnMethods = "openLoginPageTest")
     public void loginTest() {
         loginPage
                 .enterEmail(MyUtils.getPropertiesFile().getProperty("username"))
@@ -57,6 +57,6 @@ public class TestCase1 extends ThreadLocalBase {
     public void performSignOut() {
         clickOnSignOutLink();
         Assert.assertEquals(loginPage.getPageTitle(), "Login - My Store");
-    }*/
+    }
 
 }

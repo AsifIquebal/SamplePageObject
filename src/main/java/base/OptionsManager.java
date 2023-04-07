@@ -45,7 +45,7 @@ public class OptionsManager {
         //Use No Proxy Settings
         profile.setPreference("network.proxy.type", 0);
         //Set Firefox profile to capabilities
-        firefoxOptions.setCapability(FirefoxDriver.PROFILE, profile);
+        //firefoxOptions.setCapability(FirefoxDriver.PROFILE, profile);
         //firefoxOptions.addPreference();
         //
         firefoxOptions.setHeadless(false);
